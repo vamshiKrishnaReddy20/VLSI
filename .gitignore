@@ -1,0 +1,57 @@
+# pnr run outputs (100GB+)
+runs/
+
+# simulation artifacts
+*.vcd
+*.vvp
+
+# logs
+*.log
+nohup.out
+
+# equivalence check work dirs and logs
+equivalence/work_*/
+equivalence/logs/
+
+# sram macro build artifacts
+sram_macros/*.log
+sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/*.gds
+sram_macros/sky130_sram_macros/.git
+
+# reference design (not original work)
+REF/
+
+# personal docs
+docs/
+
+# testbench 
+tb/
+
+# unused files
+l1_cache_tb.vcd
+l1_cache_tb.vvp
+pnr_constraints.sdc
+Makefile
+klayout_drc_wrapper.drc
+eqy_results.log
+eqy_stage4.log
+src/l1_cache_pkg.sv
+
+# root-level one-off run scripts
+/run_*.sh
+
+# root-level json configs (kept in configs/ subdir)
+/*.json
+
+# unwanted scripts
+scripts/eco_test_*.tcl
+scripts/eco_check_*.tcl
+scripts/eco_inspect_net.tcl
+scripts/eco_route_*.tcl
+scripts/eco_move_diode.tcl
+scripts/eco_fix_last_net.tcl
+scripts/eco_detailed_route.tcl
+scripts/run_openram_ss_char.sh
+
+# windows zone identifiers
+*:Zone.Identifier

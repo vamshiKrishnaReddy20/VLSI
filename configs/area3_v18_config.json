@@ -1,0 +1,133 @@
+{
+    "DESIGN_NAME": "l1_cache_core",
+    "VERILOG_FILES": [
+        "dir::src/sky130_sram_blackbox.sv",
+        "dir::src/tag_array.sv",
+        "dir::src/data_array.sv",
+        "dir::src/pseudo_lru.sv",
+        "dir::src/l1_cache_core.sv"
+    ],
+    "CLOCK_PERIOD": 12.5,
+    "CLOCK_PORT": "clk",
+    "CLOCK_NET": "l1_cache_core.clk",
+    "VDD_NETS": [
+        "VPWR"
+    ],
+    "GND_NETS": [
+        "VGND"
+    ],
+    "DIE_AREA": [
+        0,
+        0,
+        1800,
+        1800
+    ],
+    "FP_SIZING": "absolute",
+    "CORE_AREA": [
+        50,
+        50,
+        1750,
+        1750
+    ],
+    "PL_TARGET_DENSITY_PCT": 35,
+    "PL_ROUTABILITY_DRIVEN": true,
+    "FP_PDN_MULTILAYER": true,
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "FP_IO_VLAYER": "met4",
+    "FP_IO_HLAYER": "met3",
+    "SYNTH_STRATEGY": "AREA 3",
+    "MAX_FANOUT_CONSTRAINT": 7,
+    "SYNTH_SIZING": 1,
+    "SYNTH_ABC_BUFFERING": 1,
+    "RUN_POST_GPL_DESIGN_REPAIR": 1,
+    "RUN_POST_CTS_RESIZER_TIMING": 1,
+    "RUN_POST_GRT_RESIZER_TIMING": 1,
+    "DIODE_ON_PORTS": "in",
+    "GRT_ANTENNA_ITERS": 25,
+    "GRT_ANTENNA_MARGIN": 25,
+    "GRT_LAYER_ADJUSTMENTS": [
+        0.99,
+        0.1,
+        0.1,
+        0.3,
+        0,
+        0
+    ],
+    "RUN_HEURISTIC_DIODE_INSERTION": false,
+    "DRT_OPT_ITERS": 64,
+    "PL_RESIZER_HOLD_SLACK_MARGIN": 0.2,
+    "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.2,
+    "MACROS": {
+        "sky130_sram_1kbyte_1rw1r_32x256_8": {
+            "lef": [
+                "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8.lef"
+            ],
+            "gds": [
+                "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8.gds"
+            ],
+            "lib": {
+                "nom_tt_025C_1v80": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib",
+                "nom_ss_100C_1v60": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib",
+                "nom_ff_n40C_1v95": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_FF_1p8V_25C.lib",
+                "min_tt_025C_1v80": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib",
+                "min_ss_100C_1v60": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib",
+                "min_ff_n40C_1v95": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_FF_1p8V_25C.lib",
+                "max_tt_025C_1v80": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib",
+                "max_ss_100C_1v60": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib",
+                "max_ff_n40C_1v95": "dir::sram_macros/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8/sky130_sram_1kbyte_1rw1r_32x256_8_FF_1p8V_25C.lib"
+            },
+            "instances": {
+                "gen_way[0].u_data.sram_inst": {
+                    "location": [
+                        80,
+                        80
+                    ],
+                    "orientation": "S"
+                },
+                "gen_way[1].u_data.sram_inst": {
+                    "location": [
+                        1240,
+                        80
+                    ],
+                    "orientation": "FS"
+                },
+                "gen_way[2].u_data.sram_inst": {
+                    "location": [
+                        80,
+                        1322
+                    ],
+                    "orientation": "FN"
+                },
+                "gen_way[3].u_data.sram_inst": {
+                    "location": [
+                        1240,
+                        1322
+                    ],
+                    "orientation": "N"
+                }
+            }
+        }
+    },
+    "ERROR_ON_MAGIC_DRC": false,
+    "MAGIC_DRC_USE_GDS": false,
+    "MAGIC_CAPTURE_ERRORS": false,
+    "RUN_KLAYOUT_DRC": false,
+    "FP_PDN_CORE_RING": true,
+    "FP_PDN_CORE_RING_VWIDTH": 5,
+    "FP_PDN_CORE_RING_HWIDTH": 5,
+    "FP_PDN_CORE_RING_VSPACING": 1.7,
+    "FP_PDN_CORE_RING_HSPACING": 1.7,
+    "FP_PDN_CORE_RING_VOFFSET": 14,
+    "FP_PDN_CORE_RING_HOFFSET": 14,
+    "FP_PDN_VWIDTH": 3.2,
+    "FP_PDN_HWIDTH": 3.2,
+    "FP_PDN_VPITCH": 180,
+    "FP_PDN_HPITCH": 180,
+    "FP_PDN_VOFFSET": 27,
+    "FP_PDN_HOFFSET": 27,
+    "PDN_MACRO_CONNECTIONS": [
+        ".*sram_inst VPWR VGND vccd1 vssd1"
+    ],
+    "FP_MACRO_HORIZONTAL_HALO": 15,
+    "FP_MACRO_VERTICAL_HALO": 15
+}
