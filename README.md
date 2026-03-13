@@ -2,7 +2,6 @@
 
 4KB, 4-way set-associative data cache taken from RTL through synthesis and place-and-route using open-source tools and the Sky130 PDK.
 
-**Project website**: *(coming soon)*
 
 ## Specifications
 
