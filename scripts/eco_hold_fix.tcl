@@ -8,7 +8,7 @@ set eco_dir "$run_dir/eco_fix"
 file mkdir $eco_dir
 
 puts "loading design..."
-read_db $run_dir/55-odb-cellfrequencytables/l1_cache_core.odb
+read_db $run_dir/55-odb-cellfrequencytables/data_cache_core.odb
 
 read_liberty /home/one/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
@@ -50,8 +50,8 @@ puts "\nafter eco: worst setup paths"
 report_checks -path_delay max -endpoint_count 3 -digits 4
 
 puts "\nsaving eco design..."
-write_db $eco_dir/l1_cache_core.odb
-write_def $eco_dir/l1_cache_core.def
+write_db $eco_dir/data_cache_core.odb
+write_def $eco_dir/data_cache_core.def
 
 puts "\ndone"
 exit

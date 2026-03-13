@@ -1,15 +1,15 @@
 {
-    "DESIGN_NAME": "l1_cache_core",
+    "DESIGN_NAME": "data_cache_core",
     "VERILOG_FILES": [
         "dir::src/sky130_sram_blackbox.sv",
         "dir::src/tag_array.sv",
         "dir::src/data_array.sv",
         "dir::src/pseudo_lru.sv",
-        "dir::src/l1_cache_core.sv"
+        "dir::src/data_cache_core.sv"
     ],
     "CLOCK_PERIOD": 12.5,
     "CLOCK_PORT": "clk",
-    "CLOCK_NET": "l1_cache_core.clk",
+    "CLOCK_NET": "data_cache_core.clk",
     "VDD_NETS": [
         "VPWR"
     ],

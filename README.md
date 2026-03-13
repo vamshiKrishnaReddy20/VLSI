@@ -1,6 +1,6 @@
-# L1 Data Cache — Sky130 PnR
+# Data Cache — Sky130 PnR
 
-4KB, 4-way set-associative L1 data cache taken from RTL through synthesis and place-and-route using open-source tools and the Sky130 PDK.
+4KB, 4-way set-associative data cache taken from RTL through synthesis and place-and-route using open-source tools and the Sky130 PDK.
 
 **Project website**: *(coming soon)*
 
@@ -63,7 +63,7 @@ PNR_ITERATIONS.md      log of all pnr iterations and what changed
 
 The cache is built from 5 modules:
 
-- **l1_cache_core** — top-level FSM, hit detection, writeback/refill logic
+- **data_cache_core** — top-level FSM, hit detection, writeback/refill logic
 - **data_array** — wraps the sky130 sram macro, one instance per way
 - **tag_array** — register-based tag storage, 64 sets x 22-bit tags per way
 - **pseudo_lru** — tree-based replacement policy, 3 bits per set

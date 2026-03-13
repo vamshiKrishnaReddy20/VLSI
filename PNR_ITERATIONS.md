@@ -1,6 +1,6 @@
 # PnR Iteration Log
 
-Documents the full place-and-route journey for the l1_cache_core design
+Documents the full place-and-route journey for the data_cache_core design
 on Sky130 using LibreLane/OpenROAD.
 
 ## Background

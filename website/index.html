@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Physical Design journey of a 4KB 4-way set-associative L1 Data Cache using Sky130 PDK and OpenROAD">
+    <title>L1 Cache Physical Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <div class="logo">L1_CACHE_CORE</div>
+            <div class="nav-links">
+                <a href="#specs">Specs</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#pnr-flow">PnR Flow</a>
+                <a href="#challenges">Challenges</a>
+                <a href="https://github.com/vamshiKrishnaReddy20/VLSI" target="_blank" class="btn-github">GitHub Repo ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="pill">Sky130 PDK • OpenROAD • OpenRAM</div>
+            <h1 class="gradient-text">Physical Design Journey</h1>
+            <h2>4KB L1 Data Cache Signoff</h2>
+            <p>From behavioral Verilog explosion to a clean, highly optimized ASIC layout using open-source EDA tools.</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-value">18+</div>
+                    <div class="stat-label">PnR Iterations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">DRC Errors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Met</div>
+                    <div class="stat-label">Nominal Timing</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="specs" class="section">
+            <h2 class="section-title">Specifications</h2>
+            <div class="grid-2">
+                <div class="glass-card card-hover">
+                    <h3>Cache Organization</h3>
+                    <ul>
+                        <li><span class="highlight">Size:</span> 4KB Total</li>
+                        <li><span class="highlight">Associativity:</span> 4-Way Set-Associative</li>
+                        <li><span class="highlight">Sets:</span> 64 Sets</li>
+                        <li><span class="highlight">Line Size:</span> 16 Bytes (4x 32-bit words)</li>
+                        <li><span class="highlight">Address (32b):</span> Tag[31:10] | Index[9:4] | Word[3:2] | Byte[1:0]</li>
+                    </ul>
+                </div>
+                <div class="glass-card card-hover">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li><span class="highlight">Write Policy:</span> Write-back, write-allocate</li>
+                        <li><span class="highlight">Replacement:</span> Tree-based Pseudo-LRU (3 bits/set)</li>
+                        <li><span class="highlight">Hit Latency:</span> 2 Cycles</li>
+                        <li><span class="highlight">Clean Miss:</span> 3 FSM cycles + 4 memory transfers</li>
+                        <li><span class="highlight">Dirty Miss:</span> 3 FSM cycles + 8 memory transfers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="section">
+            <h2 class="section-title">Architecture Evolution</h2>
+            <div class="architecture-grid">
+                <div class="glass-card">
+                    <div class="arch-icon">💥</div>
+                    <h3>The Behavioral Explosion</h3>
+                    <p>Initial data arrays used behavioral SystemVerilog, which synthesized to standard unclocked master-slave latch pairs. This led to an enormous 2500x2500µm die area, severe routing congestion, and a max frequency of only ~40 MHz. Every PnR iteration took over 3 hours.</p>
+                </div>
+                <div class="arrow">↓</div>
+                <div class="glass-card border-glow">
+                    <div class="arch-icon">⚡</div>
+                    <h3>OpenRAM Integration</h3>
+                    <p>Switched the standard-cell data arrays to 4 instances of <strong>sky130_sram_1kbyte_1rw1r_32x256_8</strong> macros. This reclaimed 90% of the die area, vastly improved timing, and made rapid PnR iteration possible.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pnr-flow" class="section">
+            <h2 class="section-title">The Physical Design Flow</h2>
+            
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <h3>1. Floorplan Exploration</h3>
+                        <p>Initially tried a "donut" floorplan with macros grouped in the center. This caused long wire detours and timing failures. Moved to an <strong>L-shape boundary</strong> with macros at the 4 corners, pins facing inward to a wide open central logic area.</p>
+                        <!-- Image placeholder for user -->
+                        <div class="image-container skeleton">
+                            <img id="img-floorplan" alt="Floorplan showing SRAM macros in the corners" />
+                            <div class="image-overlay">Awaiting image: Floorplan view</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <h3>2. Power Delivery Network (PDN)</h3>
+                        <p>OpenRAM macros require custom power handling. Built a 5µm core ring for VDD/GND and mapped the standard `VPWR`/`VGND` domains to the SRAM's `vccd1`/`vssd1` power pins.</p>
+                        <!-- Image placeholder for user -->
+                        <div class="image-container skeleton">
+                            <img id="img-pdn" alt="Power delivery network showing stripes and rings" />
+                            <div class="image-overlay">Awaiting image: PDN view</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <h3>3. Placement & Density</h3>
+                        <p>Routability-driven placement. Lowered target density to 35% to stop standard cells from clamping too tightly in the center, giving the router physical space for antenna diodes.</p>
+                        <!-- Image placeholder for user -->
+                        <div class="image-container skeleton">
+                            <img id="img-placement" alt="Global placement of standard cells" />
+                            <div class="image-overlay">Awaiting image: Placement view</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <h3>4. Final Routing & Antenna Fixes</h3>
+                        <p>Sky130 has strict area-based antenna rules. Enabled `GRT_ANTENNA_ITERS` and heuristic diode insertion, repairing hundreds of violations down to ZERO for signoff.</p>
+                        <!-- Image placeholder for user -->
+                        <div class="image-container skeleton">
+                            <img id="img-routing" alt="Detailed routing visualization" />
+                            <div class="image-overlay">Awaiting image: Final routing/GDS view</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="challenges" class="section">
+            <h2 class="section-title">Key Challenges Solved</h2>
+            <div class="challenges-grid">
+                <div class="glass-card feature-card">
+                    <h4>No Manual ECOs</h4>
+                    <p>Attempted manual TCL scripts to delete fillers and insert diodes post-routing. This corrupted the ODB, triggering 51,000 DRCs and 2,500 LVS errors. Switched to fully automated heuristic insertion.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <h4>SRAM Corner Characterization</h4>
+                    <p>Timing in Slow-Slow (SS) corners failed drastically. Root cause: the pre-built SS lib was characterized at 1.8V/25°C instead of 1.6V/100°C. Setup passes at nominal (1.8V TT), but extreme SS needs custom library re-gen.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <h4>Hold Timing Fixes</h4>
+                    <p>Paths between the core FSM and SRAM arrays suffered hold violations after clock tree synthesis. Fixed via automated OpenROAD `repair_timing -hold` buffer insertion.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>L1 Cache Core Project • Sky130 PDK Setup</p>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+</body>
+</html>

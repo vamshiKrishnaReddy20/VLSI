@@ -9,7 +9,7 @@ file mkdir $eco_dir
 
 # load design (pre-fill odb)
 puts "loading design..."
-read_db $run_dir/43-openroad-resizertimingpostgrt/l1_cache_core.odb
+read_db $run_dir/43-openroad-resizertimingpostgrt/data_cache_core.odb
 
 read_liberty /home/one/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
@@ -44,7 +44,7 @@ repair_antennas sky130_fd_sc_hd__diode_2 -iterations 15 -ratio_margin 90
 # write out repaired design
 puts "\nwriting repaired design..."
 write_guides $run_dir/eco_fix/route.guide
-write_db $run_dir/eco_fix/l1_cache_core_repaired.odb
+write_db $run_dir/eco_fix/data_cache_core_repaired.odb
 exit 0
 
 # legalize placement
@@ -63,8 +63,8 @@ check_placement
 
 # save
 puts "\nsaving eco design..."
-write_db $eco_dir/l1_cache_core.odb
-write_def $eco_dir/l1_cache_core.def
+write_db $eco_dir/data_cache_core.odb
+write_def $eco_dir/data_cache_core.def
 
 puts "\ndone"
 exit
