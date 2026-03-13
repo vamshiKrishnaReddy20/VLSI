@@ -1,0 +1,13 @@
+# Ignore auto-generated or third-party SRAM macro files from language statistics
+sram_macros/** linguist-generated=true
+
+# Force .sp files to not be counted as SourcePawn
+*.sp linguist-language=SPICE
+*.sp linguist-generated=true
+
+# Force .vcd and .vvp (if accidentally committed) to be ignored from lang stats
+*.vcd linguist-generated=true
+*.vvp linguist-generated=true
+
+# JSON configuration files shouldn't dominate language stats
+configs/*.json linguist-generated=true
