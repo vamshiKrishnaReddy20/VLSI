@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate images if they exist in the public/images folder
     // When the user provides screenshots, we just drop them in public/images/ and name them correctly.
     const images = {
-        'img-floorplan': 'images/floorplan.png',
-        'img-pdn': 'images/pdn.png',
-        'img-placement': 'images/placement.png',
-        'img-routing': 'images/routing.png'
+        'img-floorplan': 'images/floorplan.webp',
+        'img-pdn': 'images/pdn.webp',
+        'img-placement': 'images/placement.webp',
+        'img-routing': 'images/routing.webp'
     };
 
     // To test if images load and display them
