@@ -67,7 +67,9 @@ The cache is built from 5 modules:
 - **data_array** — wraps the sky130 sram macro, one instance per way
 - **tag_array** — register-based tag storage, 64 sets x 22-bit tags per way
 - **pseudo_lru** — tree-based replacement policy, 3 bits per set
-- **sky130_sram_blackbox** — sram macro interface (behavioral model for sim, empty for synthesis so yosys uses the liberty file)
+- **sky130_sram_blackbox** — behavioral model for synthesis/LEC (substituted with actual macro in physical design)
+
+![Final Routed OpenROAD Layout](images/final_routing.png)
 
 ## PnR Flow
 
