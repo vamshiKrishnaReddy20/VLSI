@@ -78,7 +78,7 @@ Key challenges solved:
 - SRAM macro PDN integration (custom power grid geometry for OpenRAM macros, bridging VPWR/VGND to vccd1/vssd1)
 - Antenna violation repair (iterative config tuning with heuristic diode insertion)
 - Hold timing closure on nominal corners
-- Floorplan exploration (central donut layout caused wire detours, switched to L-shape boundary with macros at corners)
+- Floorplan exploration (central donut layout caused wire detours, switched to macros at corners with proper margin)
 
 ### DRC Status
 DRC is clean for all standard cell logic. There are some remaining violations internal to the OpenRAM SRAM macros (unknown layers from the OpenRAM GDS that are not in Magic's Sky130 tech file). These are waivable since the SRAM macros are pre-verified IP from the OpenRAM project.
